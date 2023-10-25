@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Mastering LLM</title>
+    <style>
+        /* Add your CSS here for modern UI and corporate looking colors */
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Mastering LLM</h1>
+    </header>
+
+    <main>
+        <section id="questions">
+            <!-- Questions will be added here -->
+        </section>
+
+        <button id="addQuestion">Add Question</button>
+
+        <div id="newQuestion" style="display: none;">
+            <input type="text" id="questionInput" placeholder="Enter your question">
+            <textarea id="answerInput" placeholder="Enter your answer"></textarea>
+            <input type="text" id="tagsInput" placeholder="Enter tags (comma separated)">
+            <button id="submitQuestion">Submit Question</button>
+        </div>
+    </main>
+
+    <script>
+        document.getElementById('addQuestion').addEventListener('click', function() {
+            document.getElementById('newQuestion').style.display = 'block';
+        });
+
+        document.getElementById('submitQuestion').addEventListener('click', function() {
+            var question = document.getElementById('questionInput').value;
+            var answer = document.getElementById('answerInput').value;
+            var tags = document.getElementById('tagsInput').value.split(',');
+
+            var questionElement = document.createElement('div');
+            questionElement.innerHTML = '<h2>' + question + '</h2><p>' + answer + '</p><p>Tags: ' + tags.join(', ') + '</p>';
+
+            document.getElementById('questions').appendChild(questionElement);
+
+            // Clear the inputs
+            document.getElementById('questionInput').value = '';
+            document.getElementById('answerInput').value = '';
+            document.getElementById('tagsInput').value = '';
+        });
+    </script>
+
+</body>
+</html>
